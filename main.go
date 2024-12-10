@@ -35,12 +35,14 @@ func main() {
 	port := flag.Int("p", 8080, "Port where viewer will be run on localhost")
 	flag.Parse()
 
+	fs := http.FileServer(http.Dir("./static"))
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
 	http.HandleFunc("/", bishoujoPage)
 	http.HandleFunc("/advanced", advancedPage)
 	http.HandleFunc("/fumos", fumoPage)
 
 	log.Printf("Server started at http://localhost:%d\n", *port)
-	addr := fmt.Sprintf(":%d", *port)
+	addr := fmt.Sprintf("0.0.0.0:%d", *port)
 	http.ListenAndServe(addr, nil)
 }
 func initDB() {

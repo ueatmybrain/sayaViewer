@@ -89,7 +89,7 @@ body {
     background: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-height: 80vh;
-    max-width: 15em;
+    max-width: 9em;
 }
 .tick-filters-scrollable{
     overflow-y: auto;
